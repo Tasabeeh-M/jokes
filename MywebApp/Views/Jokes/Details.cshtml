@@ -1,0 +1,33 @@
+﻿@model MywebApp.Models.Jokes
+
+<div class="container mt-4">
+    <h3 class="mb-3">Comments</h3>
+
+    <!-- Existing comments -->
+    @if (Model.Comments != null && Model.Comments.Any())
+    {
+        <ul class="list-group mb-3">
+            @foreach (var comment in Model.Comments)
+            {
+                <li class="list-group-item">
+                    @comment.Content <br />
+                    <small class="text-muted">Posted on @comment.CreatedAt</small>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No comments yet.</p>
+    }
+
+    <!-- Add new comment -->
+    <form asp-action="AddComment" method="post">
+        <input type="hidden" name="jokeId" value="@Model.Id" />
+        <div class="form-group">
+            <label for="Content">Add a comment:</label>
+            <textarea name="content" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+    </form>
+</div>

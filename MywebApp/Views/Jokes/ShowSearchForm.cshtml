@@ -1,0 +1,32 @@
+﻿@model string
+
+@{
+    ViewData["Title"] = "Search Jokes";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3 text-primary">Search Jokes</h2>
+
+    <form asp-action="SearchResults" method="get" class="row g-3">
+        <div class="col-md-8">
+            <label for="query" class="form-label">Search term</label>
+            <input type="text" class="form-control" id="query" name="query"
+                   placeholder="Enter a keyword..." required />
+            <span class="text-muted small">Example: chicken, knock-knock, pun</span>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-end">
+            <button type="submit" class="btn btn-success w-100">
+                <i class="bi bi-search"></i> Search
+            </button>
+        </div>
+    </form>
+
+    <hr class="my-4" />
+
+    <div>
+        <a asp-controller="Jokes" asp-action="Index" class="btn btn-outline-secondary">
+            Back to Jokes List
+        </a>
+    </div>
+</div>
